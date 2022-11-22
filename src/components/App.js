@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import monigota from '../images/monigota.png';
 import '../styles/App.scss';
 
 function App() {
 const [numberOfErrors, setNumberOfErrors] = useState(0);
 const handleClickBtn = () => {
-  console.log('hola');
-  console.log(numberOfErrors);
   setNumberOfErrors(numberOfErrors+1);
-  console.log(numberOfErrors);
+
 }
 
   return (
