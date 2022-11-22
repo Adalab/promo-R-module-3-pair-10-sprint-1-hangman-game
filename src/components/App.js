@@ -5,7 +5,10 @@ import '../styles/App.scss';
 function App() {
 const [numberOfErrors, setNumberOfErrors] = useState(0);
 const handleClickBtn = () => {
-  setNumberOfErrors++;
+  console.log('hola');
+  console.log(numberOfErrors);
+  setNumberOfErrors(numberOfErrors+1);
+  console.log(numberOfErrors);
 }
 
   return (
