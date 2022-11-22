@@ -1,17 +1,14 @@
+import { useState } from 'react';
 import monigota from '../images/monigota.png';
 import '../styles/App.scss';
 
 function App() {
+const [numberOfErrors, setNumberOfErrors] = useState(0);
+const handleClickBtn = () => {
+  setNumberOfErrors++;
+}
+
   return (
-    /*<div className="App">
-      <h1 className="title">Rellename!</h1>
-      { Esto es un comentario }
-      { Esto es otro comentario para avisarte que quites la Monigota}
-      <img src={monigota} alt="Monigota" />
-      { Aquí va tu código HTML. }
-
-    </div>*/
-
   <div className="page">
 <header>
   <h1 className="header__title">Juego del ahorcado</h1>
@@ -55,7 +52,8 @@ function App() {
       />
     </form>
   </section>
-  <section className="dummy error-5">
+  <button className="btn" onClick={handleClickBtn}>Incrementar</button>
+  <section className={`dummy error-${numberOfErrors}`}>
     <span className="error-13 eye"></span>
     <span className="error-12 eye"></span>
     <span className="error-11 line"></span>
