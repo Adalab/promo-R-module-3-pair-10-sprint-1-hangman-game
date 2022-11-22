@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import monigota from '../images/monigota.png';
 import '../styles/App.scss';
 
 function App() {
