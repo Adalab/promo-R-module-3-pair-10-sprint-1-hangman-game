@@ -2,11 +2,44 @@ import { useState } from 'react';
 import '../styles/App.scss';
 
 function App() {
-const [numberOfErrors, setNumberOfErrors] = useState(0);
+
+//Estados
+  const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState('');
+
+
+//funciones Handle
 const handleClickBtn = () => {
   setNumberOfErrors(numberOfErrors+1);
-
 }
+
+/* 
+NOTA EXPRESIONES REGULARES
+
+para aceptar todo el alfabeto Español con sus carácteres especiales, se especifican todos los caracteres
+
+poodemos usar la negación de los numeros:
+/^[0-9]+$/
+!re.test(event.target.value)
+
+Por otra parte para que acepte "borrar la casilla" hay que incluir antes del $ un *
+*$ en lugar de +$
+
+función "test" es propia de JS para verificar una expresión regular.
+
+NOTA: VERIFICAR SI ESTA EXPRESIÓN ES LA ADECUADA, FUNCIONAR FUNCIONA
+
+*/
+
+const handleLastLetter = (event) =>{
+   const re = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü ]*$/; 
+   if (re.test(event.target.value) ){
+    setLastLetter(event.target.value)
+   }
+  }
+
+
+
 
   return (
   <div className="page">
@@ -49,6 +82,10 @@ const handleClickBtn = () => {
         type="text"
         name="last-letter"
         id="last-letter"
+        value={lastLetter}
+        onChange={handleLastLetter}
+        pattern = {"^[a-zA-Z]+$"}
+
       />
     </form>
   </section>
