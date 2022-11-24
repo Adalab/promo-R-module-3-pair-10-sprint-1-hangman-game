@@ -36,7 +36,7 @@ const handleLastLetter = (event) =>{
    const re = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü ]*$/; 
    if (re.test(event.target.value) ){
     setLastLetter(event.target.value); 
-    setUserLetters(...event.target.value) //Mirar cómo resolverlo!
+    setUserLetters([...userLetters,event.target.value]) //Mirar cómo resolverlo!
    }
   }
 
