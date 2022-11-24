@@ -5,8 +5,9 @@ function App() {
 
 //Estados
   const [numberOfErrors, setNumberOfErrors] = useState(0);
-  const [lastLetter, setLastLetter] = useState('');
-
+  const [lastLetter, setLastLetter] = useState(''); //Para controlar el input
+  const [word, setWord] = useState('katakroker');
+  const [userLetters, setUserLetters] = useState([]);
 
 //funciones Handle
 const handleClickBtn = () => {
@@ -34,10 +35,17 @@ NOTA: VERIFICAR SI ESTA EXPRESIÓN ES LA ADECUADA, FUNCIONAR FUNCIONA
 const handleLastLetter = (event) =>{
    const re = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü ]*$/; 
    if (re.test(event.target.value) ){
-    setLastLetter(event.target.value)
+    setLastLetter(event.target.value); 
+    setUserLetters(...event.target.value) //Mirar cómo resolverlo!
    }
   }
 
+  const renderSolutionLetters = () => {
+    const wordLetters = word.split('');
+    return wordLetters.map ((letter, index) => {
+      return <li key={index}  className="letter"></li>
+  })
+  }
 
 
 
@@ -50,8 +58,10 @@ const handleLastLetter = (event) =>{
   <section>
     <div className="solution">
       <h2 className="title">Solución:</h2>
+    
       <ul className="letters">
-        <li className="letter">k</li>
+      {renderSolutionLetters()}
+        {/* <li className="letter">k</li>
         <li className="letter">a</li>
         <li className="letter"></li>
         <li className="letter">a</li>
@@ -60,7 +70,7 @@ const handleLastLetter = (event) =>{
         <li className="letter"></li>
         <li className="letter">k</li>
         <li className="letter">e</li>
-        <li className="letter">r</li>
+        <li className="letter">r</li> */}
       </ul>
     </div>
     <div className="error">
