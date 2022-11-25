@@ -34,20 +34,44 @@ NOTA: VERIFICAR SI ESTA EXPRESIÓN ES LA ADECUADA, FUNCIONAR FUNCIONA
 
 const handleLastLetter = (event) =>{
    const re = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü ]*$/; 
-   if (re.test(event.target.value) ){
+   if (re.test(event.target.value)){//pendiente soporte para no guardar en blanco
     setLastLetter(event.target.value); 
-    setUserLetters([...userLetters,event.target.value]) //Mirar cómo resolverlo!
+    setUserLetters([...userLetters,event.target.value])
+     //Mirar cómo resolverlo!
    }
   }
 
+
   const renderSolutionLetters = () => {
     const wordLetters = word.split('');
+    console.log(wordLetters);
+    console.log(userLetters);
+
+     /*const errorLetter = userLetters.filter((letter2)=> { 
+      return letter2.includes(wordLetters)})
+      console.log(`error ${errorLetter}`); */
+
     return wordLetters.map ((letter, index) => {
-      return <li key={index}  className="letter"></li>
-  })
-  }
+      const errorLetters =[] 
+      userLetters.filter((letter2)=> { 
+      return errorLetters.push (letter2.includes(letter))
+    });
+
+      console.log(`error ${errorLetters}`);
+      return <li key={index}  className="letter"></li>;
+     
+  });
+}
 
 
+
+/* const renderErrorLetters =() => {  */
+    // array: userLetters lo que escribe
+    //array: solución wordletters
+/*   return const errorLetter = userLetters.filter((letter)=> {!letter.includes(wordLetters)})
+    
+  } */
+ 
 
   return (
   <div className="page">
@@ -76,11 +100,12 @@ const handleLastLetter = (event) =>{
     <div className="error">
       <h2 className="title">Letras falladas:</h2>
       <ul className="letters">
-        <li className="letter">f</li>
+     {/*  {renderErrorLetters()} */}
+   {/*      <li className="letter">f</li>
         <li className="letter">q</li>
         <li className="letter">h</li>
         <li className="letter">p</li>
-        <li className="letter">x</li>
+        <li className="letter">x</li> */}
       </ul>
     </div>
     <form className="form">
