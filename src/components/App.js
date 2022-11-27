@@ -4,7 +4,7 @@ import fetchWord from '../services/api';
 import '../styles/App.scss';
 
 function App() {
-  //  pendiente : cuando gane la usuaria poner un cartel de Fin, ganaste y botton reset
+  //PENDIENTE: cartel, has ganado, y que no puedas continuar jugando, y botton reset para volver a jugar
 
   //----------Estados----------------
 
